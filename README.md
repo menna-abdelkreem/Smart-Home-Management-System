@@ -1,5 +1,4 @@
 # Smart-Home-Management-System
-Smart Home Management System
 Abstract
 The Smart Home Management System is an integrated solution designed to automate, monitor, and control household deices efficiency. 
 The system improves home security, energy consumption, and user comfort by providing intelligent control over lighting, temperature, doors, appliances, and renewable energy source.
