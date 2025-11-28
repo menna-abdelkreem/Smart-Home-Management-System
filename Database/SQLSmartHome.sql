@@ -5,121 +5,76 @@ USE SmartHome;
 GO
 
 
-
-CREATE TABLE Users (
-    userId INT PRIMARY KEY,
-    username VARCHAR(100) NOT NULL UNIQUE,
-    password VARCHAR(100) NOT NULL,
-    email VARCHAR(100),
-    phone VARCHAR(20),
-
-    preferredMode VARCHAR(20),
-    language VARCHAR(20),
-    notificationsEnabled BIT,
-    theme VARCHAR(20),
-    twoFactorEnabled BIT,
-    lastLogin DATETIME,
-
-    totalUsageHours FLOAT,
-    lastUsedDevice INT,
-    role VARCHAR(20)
-);
-
-CREATE TABLE Room (
-    id INT PRIMARY KEY,
-    name VARCHAR(100),
-    roomType VARCHAR(50),
-    floorNumber INT,
-    area FLOAT,
-    ownerUserId INT NOT NULL,       -- MUST relationship (owns)
-
-    FOREIGN KEY (ownerUserId) REFERENCES Users(userId)
-);
-
 CREATE TABLE Device (
     id INT PRIMARY KEY,
-    name VARCHAR(100),
-    powerConsumption FLOAT,
-    location VARCHAR(100),
-
-    roomId INT NOT NULL,         -- MUST belong to a room
-    FOREIGN KEY(roomId) REFERENCES Room(id)
+    name NVARCHAR(100) NOT NULL,
+    location NVARCHAR(100),
+    powerUsage FLOAT,
+    type NVARCHAR(20) NOT NULL,   
+    isOn BIT DEFAULT 0
 );
 
-CREATE TABLE Door (
-    id INT PRIMARY KEY,
-    isLocked BIT,
-    FOREIGN KEY(id) REFERENCES Device(id)
-);
-
-CREATE TABLE Light (
+CREATE TABLE LightAttributes (
     id INT PRIMARY KEY,
     brightness INT,
-    FOREIGN KEY(id) REFERENCES Device(id)
+    color NVARCHAR(50),
+    FOREIGN KEY (id) REFERENCES Device(id) ON DELETE CASCADE
 );
-
-CREATE TABLE AC (
+CREATE TABLE ACAttributes (
     id INT PRIMARY KEY,
-    temperature INT,
-    FOREIGN KEY(id) REFERENCES Device(id)
+    temperature FLOAT,
+    mode NVARCHAR(50),
+    FOREIGN KEY (id) REFERENCES Device(id) ON DELETE CASCADE
 );
-
-CREATE TABLE Refrigerator (
+CREATE TABLE RefrigeratorAttributes (
     id INT PRIMARY KEY,
-    internalTemp INT,
-    FOREIGN KEY(id) REFERENCES Device(id)
+    temperature FLOAT,
+    doorOpen BIT,
+    FOREIGN KEY (id) REFERENCES Device(id) ON DELETE CASCADE
 );
-
-CREATE TABLE RenewableEnergySource (
+CREATE TABLE DoorAttributes (
     id INT PRIMARY KEY,
-    generatedPower FLOAT
+    isLocked BIT,
+    FOREIGN KEY (id) REFERENCES Device(id) ON DELETE CASCADE
 );
-
-CREATE TABLE SolarPanel (
-    id INT PRIMARY KEY,
-    capacity FLOAT,
-    FOREIGN KEY(id) REFERENCES RenewableEnergySource(id)
+CREATE TABLE Room (
+    name NVARCHAR(100) PRIMARY KEY
 );
-
-CREATE TABLE WindTurbine (
-    id INT PRIMARY KEY,
-    speed FLOAT,
-    FOREIGN KEY(id) REFERENCES RenewableEnergySource(id)
-);
-
-
-CREATE TABLE Device_Uses_Source (
+CREATE TABLE RoomDevices (
+    roomName NVARCHAR(100),
     deviceId INT,
-    sourceId INT,
-
-    PRIMARY KEY (deviceId, sourceId),
-
-    FOREIGN KEY(deviceId) REFERENCES Device(id),
-    FOREIGN KEY(sourceId) REFERENCES RenewableEnergySource(id)
+    FOREIGN KEY (roomName) REFERENCES Room(name),
+    FOREIGN KEY (deviceId) REFERENCES Device(id),
+    PRIMARY KEY (roomName, deviceId)
 );
+CREATE TABLE Users (
+    id INT PRIMARY KEY,
+    username NVARCHAR(50),
+    password NVARCHAR(100),
+    email NVARCHAR(100),
+    phone NVARCHAR(20),
+    role NVARCHAR(20),
 
-CREATE TABLE User_AllowedRooms (
+    preferredMode NVARCHAR(20),
+    language NVARCHAR(10),
+    notificationsEnabled BIT,
+    theme NVARCHAR(20),
+    twoFactorEnabled BIT,
+
+    lastLogin DATETIME,
+    totalUsageHours FLOAT,
+    lastUsedDevice NVARCHAR(100),
+    energySavingMode BIT
+);
+CREATE TABLE UserAllowedRooms (
     userId INT,
-    roomId INT,
-
-    PRIMARY KEY (userId, roomId),
-
-    FOREIGN KEY(userId) REFERENCES Users(userId),
-    FOREIGN KEY(roomId) REFERENCES Room(id)
+    roomName NVARCHAR(100),
+    FOREIGN KEY (userId) REFERENCES Users(id),
+    FOREIGN KEY (roomName) REFERENCES Room(name)
 );
-
-CREATE TABLE User_AllowedDevices (
+CREATE TABLE UserAllowedDevices (
     userId INT,
-    deviceId INT,
-
-    PRIMARY KEY (userId, deviceId),
-
-    FOREIGN KEY(userId) REFERENCES Users(userId),
-    FOREIGN KEY(deviceId) REFERENCES Device(id)
+    deviceName NVARCHAR(100),
+    FOREIGN KEY (userId) REFERENCES Users(id)
 );
-
-
-
-
-
 
