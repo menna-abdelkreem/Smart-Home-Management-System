@@ -26,7 +26,8 @@ public class UserMapper {
         user.setLastUsedDevice(rs.getString("lastUsedDevice"));
         user.addUsageHours(rs.getDouble("totalUsageHours"));
 
-        user.enableEnergySavingMode(); // لو energySavingMode = true
+        user.enableEnergySavingMode(); //  energySavingMode = true
         return user;
     }
 }
+
