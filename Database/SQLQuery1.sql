@@ -1,0 +1,105 @@
+CREATE DATABASE SmartHomeDB;
+GO
+USE SmartHomeDB;
+GO
+CREATE TABLE Users(
+id INT IDENTITY(1,1) PRIMARY KEY,
+username NVARCHAR(50) NOT NULL UNIQUE,
+password NVARCHAR(255) NOT NULL,
+email NVARCHAR(100),
+phone NVARCHAR (20),
+preferredMode NVARCHAR(20) DEFAULT 'Home',
+language NVARCHAR(10) DEFAULT 'EN',
+notificationsEnable BIT DEFAULT 1,
+theme NVARCHAR(20) DEFAULT 'light',
+twoFactorEnabled BIT DEFAULT 0,
+lastLogin DATETIME DEFAULT GETDATE(),
+role NVARCHAR(20) NOT NULL,
+totalUsageHours FLOAT DEFAULT 0,
+lastUsedDevices NVARCHAR(100) DEFAULT 'None',
+energySavingMode BIT DEFAULT 0
+);
+GO
+CREATE TABLE Devices(
+id INT IDENTITY(1,1) PRIMARY KEY,
+name NVARCHAR(100) NOT NULL,
+location NVARCHAR(100),
+powerUsage FLOAT,
+isOn BIT DEFAULT 0,
+deviceType NVARCHAR(30) NOT NULL,
+ac_temperature FLOAT NULL,
+ac_mode NVARCHAR(20) NULL,
+light_brightness INT NULL,
+light_color NVARCHAR(30) NULL,
+door_locked BIT NULL,
+refrigerator_temperature FLOAT NULL,
+refrigerator_doorOpen BIT NULL
+);
+GO
+CREATE TABLE Rooms(
+id INT IDENTITY(1,1) PRIMARY KEY,
+name NVARCHAR(50) UNIQUE NOT NULL,
+floor NVARCHAR(50) NULL
+);
+GO
+CREATE TABLE UserAllowedRooms(
+userId INT,
+roomName NVARCHAR(100),
+PRIMARY KEY (userId, roomName),
+FOREIGN KEY (userId) REFERENCES Users(id) ON DELETE CASCADE
+);
+GO
+CREATE TABLE UserAllowedDevices(
+userId INT,
+deviceName NVARCHAR(100),
+PRIMARY KEY (userId, deviceName),
+FOREIGN KEY (userId) REFERENCES Users(id) ON DELETE CASCADE
+);
+GO
+CREATE TABLE RoomDevices(
+roomId INT,
+deviceId INT,
+PRIMARY KEY (roomId, deviceId),
+FOREIGN KEY (roomId) REFERENCES Rooms(id) ON DELETE CASCADE,
+FOREIGN KEY (deviceId) REFERENCES Devices(id) ON DELETE CASCADE
+);
+GO
+Create TABLE RenewableEnergySources(
+id NVARCHAR(50) PRIMARY KEY,
+sourceType NVARCHAR(20) NOT NULL,
+generatedPower FLOAT DEFAULT 0,
+sunlightIntensity FLOAT NULL,
+windSpeed FLOAT NULL
+);
+GO
+CREATE TABLE UsageHistory(
+id INT IDENTITY(1,1) PRIMARY KEY,
+userId INT,
+deviceId INT,
+startTime DATETIME DEFAULT GETDATE(),
+endTime DATETIME NULL,
+FOREIGN KEY (userId) REFERENCES Users(id) ON DELETE CASCADE,
+FOREIGN KEY (deviceId) REFERENCES Devices(id) ON DELETE CASCADE
+);
+GO
+CREATE TABLE DeviceSettingHistory(
+id INT IDENTITY(1,1) PRIMARY KEY,
+deviceId INT,
+settingName NVARCHAR(50),
+oldValue NVARCHAR(50),
+newValue NVARCHAR(50),
+changeAt DATETIME DEFAULT GETDATE(),
+FOREIGN KEY (deviceId) REFERENCES Devices(id) ON DELETE CASCADE 
+);
+GO
+CREATE TABLE Auditlogs(
+id INT IDENTITY(1,1) PRIMARY KEY,
+userId INT NULL,
+action NVARCHAR(100),
+target NVARCHAR(100) NULL,
+actionTime DATETIME DEFAULT GETDATE(),
+FOREIGN KEY (userId) REFERENCES Users(id) ON DELETE SET NULL
+);
+GO
+SELECT * FROM Users;
+DELETE FROM Users WHERE username IS NULL OR username = '';
