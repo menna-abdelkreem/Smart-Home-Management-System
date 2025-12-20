@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.VBox?>
+<?import org.kordamp.ikonli.javafx.FontIcon?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.Region?>
+<BorderPane
+        xmlns="http://javafx.com/javafx/21"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="GUI.controllers.LogController"
+        stylesheets="@/GUI/styles/logs.css">
+    <top>
+        <HBox spacing="15"
+              styleClass="top-bar">
+              <Label text="Audit Logs"
+                     styleClass="title"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Back"
+                styleClass="back-button"
+                onAction="#goBack"/>
+    </HBox>
+    </top>
+    <center >
+        <TableView fx:id="logsTable">
+            <columns>
+                <TableColumn styleClass="column" fx:id="idCol" text="ID"/>
+                <TableColumn styleClass="column" fx:id="userCol" text="User ID"/>
+                <TableColumn styleClass="column" fx:id="actionCol" text="Action"/>
+                <TableColumn styleClass="column" fx:id="targetCol" text="Target"/>
+                <TableColumn styleClass="column" fx:id="dateCol" text="Time"/>
+            </columns>
+        </TableView>
+    </center>
+</BorderPane>

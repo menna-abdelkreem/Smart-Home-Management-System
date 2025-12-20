@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+         fx:controller="GUI.controllers.RoomController"
+            stylesheets="@/GUI/styles/rooms.css"
+            prefWidth="1100"
+            prefHeight="700">
+    <top>
+        <HBox spacing="15"
+              styleClass="top-bar">
+            <Label text="Smart Home Management System"
+                   styleClass="top-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label text="Admin" styleClass="top-title"/>
+        </HBox>
+    </top>
+    <left>
+        <VBox spacing="15"
+              styleClass="sidebar">
+            <Label text="Smart Home"
+                   styleClass="sidebar-title"/>
+            <Button text="Dashboard"
+                    onAction="#goToDashboard"
+                    styleClass="menu-button"/>
+            <Button text="Rooms"
+                    styleClass="menu-button-active"/>
+            <Button text="Devices"
+                    styleClass="menu-button"/>
+            <Button text="Energy"
+                    styleClass="menu-button"/>
+            <Button text="Settings"
+                    styleClass="menu-button"/>
+            <Region VBox.vgrow="ALWAYS"/>
+            <Button text="Logout"
+                    styleClass="logout-button"/>
+        </VBox>
+    </left>
+    <center>
+        <VBox spacing="25"
+              styleClass="content">
+            <HBox alignment="CENTER_LEFT">
+                <VBox>
+                    <Label text="Rooms"
+                           styleClass="page-title"/>
+                    <Label text="Manage all room in your smart home"
+                           styleClass="subtitle"/>
+                </VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="+ Add Room"
+                    onAction="#openAddRoomDialog"
+                    styleClass="primary-btn"/>
+            </HBox>
+            <HBox spacing="15"
+                  alignment="CENTER_LEFT"
+                  styleClass="room-card1">
+                <Label text="Home"/>
+                <VBox spacing="5">
+                      <Label fx:id="roomNameLabel"
+                             styleClass="room-title"/>
+                             <Label fx:id="roomInfoLabel"
+                                    styleClass="room-info"/>
+            </VBox>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Button text="view Devices"
+                    styleClass="view-button"
+                    onAction="#openRoomDevices"/>
+
+            </HBox>
+        <FlowPane fx:id="roomsContainer"
+                  hgap="20"
+                  vgap="20"
+                  prefWrapLength="700">
+        </FlowPane>
+        </VBox>
+    </center>
+</BorderPane>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/21"
+            xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="GUI.controllers.DeviceController"
+stylesheets="@/GUI/styles/device.css"
+prefWidth="1100"
+prefHeight="700">
+    <top>
+        <HBox spacing="15"
+              styleClass="top-bar">
+            <Label text="Devices"
+                   styleClass="top-title"/>
+            <Region HBox.hgrow="ALWAYS"/>
+            <Label text="Admin" styleClass="top-title"/>
+            <Button text="Back"
+                    styleClass="back-button"
+                    onAction="#goBack"/>
+        </HBox>
+    </top>
+    <left>
+        <VBox spacing="15"
+              styleClass="sidebar">
+            <Label text="Smart Home"
+                   styleClass="sidebar-title"/>
+            <Button text="Dashboard"
+                    onAction="#goToDashboard"
+                    styleClass="menu-button"/>
+            <Button text="Rooms"
+                    styleClass="menu-button"/>
+            <Button text="Devices"
+                    styleClass="menu-button-active"/>
+            <Button text="Energy"
+                    styleClass="menu-button"/>
+            <Button text="Settings"
+                    styleClass="menu-button"/>
+            <Region VBox.vgrow="ALWAYS"/>
+            <Button text="Logout"
+                    styleClass="logout-button"/>
+        </VBox>
+    </left>
+            <center>
+                <ScrollPane fitToWidth="true"
+                            style="-fx-background-color: transparent;">
+
+                <FlowPane fx:id="devicesContainer"
+                          hgap="20"
+                          vgap="20"
+                          style="-fx-padding: 30;"/>
+                </ScrollPane>
+        </center>
+</BorderPane>

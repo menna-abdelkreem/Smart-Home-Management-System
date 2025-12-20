@@ -1,0 +1,122 @@
+.root{
+-fx-font-family: "Segoe UI";
+-fx-background:  #D3D3D3;
+}
+.top-bar{
+-fx-padding: 15 25;
+-fx-background-color: linear-gradient(to bottom right, #0f2027, #203a43,#2c5364);
+-fx-border-color: #dddddd;
+-fx-border-width: 0010;
+}
+.top-title{
+-fx-font-size: 18px;
+-fx-font-weight: bold;
+-fx-text-fill: #FF7F50;
+}
+.user-label{
+-fx-text-fill: #FF7F50;
+}
+.sidebar{
+-fx-padding: 20;
+-fx-background-color:  linear-gradient(to bottom right, #0f2027, #203a43,#2c5364);
+}
+.sidebar-title{
+-fx-text-fill: white;
+-fx-font-size: 16px;
+-fx-font-weight: bold;
+}
+.menu-button{
+-fx-background-color: transparent;
+-fx-text-fill: #cbd5e1;
+-fx-font-size: 14px;
+-fx-alignment: CENTER_LEFT;
+-fx-pref-width: 180;
+-fx-cursor: hand;
+-fx-translation: all 0.3s;
+}
+.menu-button:hover{
+-fx-background-color: #334155;
+}
+.menu-button-active{
+-fx-background-color: white;
+-fx-text-fill: #A9A9A9;
+}
+.menu-button-active:hover{
+-fx-background-color: #FF7F50;
+}
+.logout-button{
+-fx-background-color: #FF7F50;
+-fx-text-fill: white;
+-fx-font-weight: bold;
+-fx-cursor: hand;
+}
+.logout-button:hover{
+-fx-background-color: white;
+-fx-text-fill: #FF7F50;
+}
+.content{
+-fx-padding: 30;
+}
+.page-title{
+-fx-font-size: 24px;
+-fx-font-weight: bold;
+-fx-text-fill: #800020;
+}
+.subtitle{
+-fx-text-fill: #6F4E37;
+}
+.primary-btn{
+-fx-background-color: #800020;
+-fx-text-fill: white;
+-fx-background-radius: 8;
+}
+.primary-btn:hover{
+-fx-background-color: #F0E68C;
+}
+.secondary-btn{
+-fx-background-color: transparent;
+-fx-background-color: #800020;
+-fx-text-fill: white;
+-fx-background-radius: 8;
+-fx-border-radius: 8;
+}
+.secondary-btn:hover{
+-fx-background-color: #F0E68C;
+-fx-text-fill: white;
+}
+.room-card{
+-fx-background-color: #F5DEB3;
+-fx-padding: 20;
+-fx-spacing: 10;
+-fx-border-radius: 12;
+-fx-background-radius: 12;
+}
+.room-card:hover{
+-fx-border-color:  #800020;
+-fx-background-color: #C19A6B;
+}
+.room-name{
+-fx-font-size: 16px;
+-fx-font-weight: bold;
+}
+.room-devices{
+-fx-text-fill: #6F4E37;
+}
+.room-card1 {
+-fx-padding: 15;
+-fx-background-color: #D3D3D3;
+-fx-background-radius: 15;
+-fx-text-fill:  #6F4E37;
+-fx-effect: dropshadow(gaussian, rgba(0,0,0,0.15), 15, 0, 0, 5);
+}
+
+.room-card1:hover {
+    -fx-scale-x: 1.02;
+    -fx-scale-y: 1.02;
+}
+
+.view-button {
+    -fx-background-color: #800020;
+    -fx-text-fill: white;
+    -fx-background-radius: 20;
+}

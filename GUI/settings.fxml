@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox spacing="15" alignment="CENTER"
+      xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="GUI.controllers.DeviceSettingsController"
+      style="-fx-padding: 20;">
+    <Label text="Device Settings"
+           style="-fx-font-size: 20px
+-fx-font-weight: bold;"/>
+
+    <HBox spacing="10">
+        <Label text="Device Name: "/>
+        <TextField fx:id="nameField"/>
+    </HBox>
+    <HBox spacing="10">
+        <Label text="Mode: "/>
+        <ComboBox fx:id="modeBox"/>
+    </HBox>
+    <Button text="Save Changes"
+            onAction="#saveSettings"/>
+
+</VBox>
+

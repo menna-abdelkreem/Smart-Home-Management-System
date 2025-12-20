@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane
+    xmlns:fx ="http://javafx.com/fxml/1"
+    xmlns="http://javafx.com/javafx/21"
+    fx:controller="GUI.controllers.DashboardController"
+    stylesheets="@/GUI/styles/dashboard.css"
+prefWidth="1100"
+prefHeight="700">
+   <top>
+       <HBox spacing="15"
+            styleClass="top-bar">
+           <Label text="Smart Home Management System"
+                  styleClass="top-title"/>
+           <Region HBox.hgrow="ALWAYS"/>
+           <Label text="Admin" styleClass="top-title"/>
+       </HBox>
+   </top>
+    <left>
+        <VBox
+              spacing="15"
+              styleClass="sidebar">
+            <Label text="Smart Home"
+                   styleClass="sidebar-title"/>
+            <Button text="Dashboard"
+                    styleClass="menu-button-active"/>
+            <Button text="Rooms"
+                    maxWidth="-Infinity"
+                    onAction="#goToRooms"
+                   styleClass="menu-button"/>
+            <Button text="Devices"
+                    onAction="#goToDevices"
+                    styleClass="menu-button"/>
+            <Button text="Energy"
+                    onAction="#goToEnergy"
+                    styleClass="menu-button"/>
+            <Button text="logs"
+                    onAction="#goToLogs"
+                    styleClass="menu-button"/>
+
+            <Region VBox.vgrow="ALWAYS"/>
+            <Button text="Logout"
+                   styleClass="logout-button"/>
+        </VBox>
+    </left>
+    <center>
+        <VBox fx:id="content"
+                spacing="25"
+              styleClass="content">
+            <Label text="Dashboard"
+                   styleClass="page-title"/>
+            <Label text="System Overview"
+                   styleClass="page-subtitle"/>
+            <HBox spacing="20">
+                <VBox
+                    styleClass="card">
+                    <Label
+                            text="Total Devices"/>
+                    <Label fx:id="devicesCountLbl"
+                            text="12"
+                           styleClass="card-value"/>
+                </VBox>
+                <VBox styleClass="card">
+                    <Label
+                            text="Active Rooms"/>
+                    <Label fx:id="roomsCountLbl"
+                            text="5"
+                           styleClass="card-value"/>
+                </VBox>
+                <VBox styleClass="card">
+                    <Label text="Energy Usage"/>
+                    <Label fx:id="energyStatusLbl"
+                            text="Low" styleClass="card-value"/>
+                </VBox>
+            </HBox>
+
+        </VBox>
+    </center>
+</BorderPane>

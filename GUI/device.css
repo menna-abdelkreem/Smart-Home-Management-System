@@ -1,0 +1,96 @@
+.root{
+-fx-font-family: "Segoe UI";
+-fx-background: #D3D3D3;
+}
+.top-bar{
+-fx-padding: 15 25;
+-fx-background-color: linear-gradient(to bottom right, #0f2027, #203a43,#2c5364);
+-fx-border-color: #dddddd;
+-fx-border-width: 10;
+}
+.top-title{
+-fx-font-size: 18px;
+-fx-font-weight: bold;
+-fx-text-fill: #FF7F50;
+}
+.user-label{
+-fx-text-fill: #FF7F50;
+}
+.back-button{
+-fx-background-color: white;
+-fx-text-fill: #A9A9A9;
+}
+.back-button:hover{
+-fx-background-color: #FF7F50;
+}
+.sidebar{
+-fx-padding: 20;
+-fx-background-color:  linear-gradient(to bottom right, #0f2027, #203a43,#2c5364);
+}
+.sidebar-title{
+-fx-text-fill: white;
+-fx-font-size: 16px;
+-fx-font-weight: bold;
+}
+.menu-button{
+-fx-background-color: transparent;
+-fx-text-fill: #cbd5e1;
+-fx-font-size: 14px;
+-fx-alignment: CENTER_LEFT;
+-fx-pref-width: 180;
+-fx-cursor: hand;
+-fx-translation: all 0.3s;
+}
+.menu-button:hover{
+-fx-background-color: #334155;
+}
+.menu-button-active{
+-fx-background-color: white;
+-fx-text-fill: #A9A9A9;
+}
+.menu-button-active:hover{
+-fx-background-color: #FF7F50;
+}
+.logout-button{
+-fx-background-color: #FF7F50;
+-fx-text-fill: white;
+-fx-font-weight: bold;
+-fx-cursor: hand;
+}
+.logout-button:hover{
+-fx-background-color: white;
+-fx-text-fill: #FF7F50;
+}
+.device-card{
+-fx-background-color: #ECFFDC;
+-fx-padding: 15;
+-fx-background-radius: 10;
+-fx-border-radius: 10;
+-fx-min-width: 220;
+-fx-effect: dropshadow(gaussian,rgba(0,0,0,0.15),15,0,0,5);
+}
+.device-card:hover{
+-fx-scale-x: 1.03;
+-fx-scale-y: 1.03;
+}
+.device-title{
+-fx-font-size: 16px;
+-fx-font-weight: bold;
+}
+.device-type{
+-fx-text-fill: gray;
+}
+.device-toggle{
+-fx-background-radius: 20;
+-fx-pref-width: 90;
+}
+.device-toggle.on{
+-fx-text-fill: white;
+}
+.device-toggle.off{
+-fx-text-fill: white;
+}
+.device-name{
+-fx-font-size: 16px;
+-fx-font-weight: bold;
+}
