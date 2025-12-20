@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox
+        xmlns="http://javafx.com/javafx/21"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="GUI.controllers.DeviceCardController"
+        spacing="10"
+        alignment="CENTER"
+        styleClass="device-card"
+        prefWidth="180"
+        prefHeight="150">
+    <Label fx:id="nameLabel"
+    styleClass="device-name"/>
+    <Label fx:id="typeLabel"
+    styleClass="device-type"/>
+    <Label fx:id="statusLabel"
+    styleClass="device-status"/>
+    <VBox fx:id="detailsBox"
+          spacing="5"/>
+    <Button fx:id="toggleBtn"
+            styleClass="device-toggle"
+                  onAction="#toggleDevice"
+                  />
+    <Button text="Settings"
+            fx:id="settingsButton"
+    onAction="#openSettings"/>
+</VBox>
